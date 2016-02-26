@@ -10,7 +10,8 @@ fi
 
 ENV=$1
 NETWORK=$2
-FRAMEWORK="alewrap"
+# FRAMEWORK="alewrap"
+FRAMEWORK="MazeBase"
 
 game_path=$PWD"/roms/"
 env_params="useRGB=true"
@@ -23,7 +24,7 @@ discount=0.99
 seed=1
 learn_start=50000
 pool_frms_type="\"max\""
-pool_frms_size=2
+pool_frms_size=2w
 initial_priority="false"
 replay_memory=1000000
 eps_end=0.1

@@ -11,38 +11,34 @@ TOPDIR=$PWD
 PREFIX=$PWD/torch
 echo "Installing Torch into: $PREFIX"
 
-if [[ `uname` != 'Linux' ]]; then
-  echo 'Platform unsupported, only available for Linux'
-  exit
-fi
-if [[ `which apt-get` == '' ]]; then
-    echo 'apt-get not found, platform not supported'
-    exit
-fi
+# if [[ `uname` != 'Linux' ]]; then
+#   echo 'Platform unsupported, only available for Linux'
+#   exit
+# fi
+# if [[ `which apt-get` == '' ]]; then
+#     echo 'apt-get not found, platform not supported'
+#     exit
+# fi
 
 # Install dependencies for Torch:
-sudo apt-get update
-sudo apt-get install -qqy build-essential
-sudo apt-get install -qqy gcc g++
-sudo apt-get install -qqy cmake
-sudo apt-get install -qqy curl
-sudo apt-get install -qqy libreadline-dev
-sudo apt-get install -qqy git-core
-sudo apt-get install -qqy libjpeg-dev
-sudo apt-get install -qqy libpng-dev
-sudo apt-get install -qqy ncurses-dev
-sudo apt-get install -qqy imagemagick
-sudo apt-get install -qqy unzip
-sudo apt-get install -qqy libqt4-dev
-sudo apt-get install -qqy liblua5.1-0-dev
-sudo apt-get install -qqy libgd-dev
-sudo apt-get update
+# brew install build-essential
+# brew install gcc g++
+# brew install cmake
+# brew install curl
+# brew install libreadline-dev
+# brew install git-core
+# brew install libjpeg-dev
+# brew install libpng-dev
+# brew install ncurses-dev
+# brew install imagemagick
+# brew install unzip
+# brew install libqt4-dev
+# brew install liblua5.1-0-dev
+# brew install libgd-dev
+# brew update
 
 
 echo "==> Torch7's dependencies have been installed"
-
-
-
 
 
 # Build and install Torch7
@@ -117,16 +113,16 @@ $PREFIX/bin/luarocks make
 RET=$?; if [ $RET -ne 0 ]; then echo "Error. Exiting."; exit $RET; fi
 echo "Alewrap installation completed"
 
-echo "Installing Lua-GD ... "
-mkdir $PREFIX/src
-cd $PREFIX/src
-rm -rf lua-gd
-git clone https://github.com/ittner/lua-gd.git
-cd lua-gd
-sed -i "s/LUABIN=lua5.1/LUABIN=..\/..\/bin\/luajit/" Makefile
-$PREFIX/bin/luarocks make
-RET=$?; if [ $RET -ne 0 ]; then echo "Error. Exiting."; exit $RET; fi
-echo "Lua-GD installation completed"
+# echo "Installing Lua-GD ... "
+# mkdir $PREFIX/src
+# cd $PREFIX/src
+# rm -rf lua-gd
+# git clone https://github.com/ittner/lua-gd.git
+# cd lua-gd
+# sed -i "s/LUABIN=lua5.1/LUABIN=..\/..\/bin\/luajit/" Makefile
+# $PREFIX/bin/luarocks make
+# RET=$?; if [ $RET -ne 0 ]; then echo "Error. Exiting."; exit $RET; fi
+# echo "Lua-GD installation completed"
 
 echo
 echo "You can run experiments by executing: "
